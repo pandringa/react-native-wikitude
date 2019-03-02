@@ -15,8 +15,5 @@
 	],
 	"author": "brave-digital",
 	"license": "MIT",
-	"repository": "github:brave-digital/react-native-wikitude",
-	"dependencies": {
-		"npm": "^5.7.1"
-	}
+	"repository": "github:brave-digital/react-native-wikitude"
 }
