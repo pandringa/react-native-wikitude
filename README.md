@@ -1,3 +1,9 @@
+# ET Lab React Native Wikitude Bridge
+This fork of [`react-native-wikitude`](https://github.com/brave-digital/react-native-wikitude) exposes an ARView component to be used in a React App, instead of opening it's own popup window.
+
+**Note**: This is currently only functional for iOS apps. Android support is TK at a later date.
+
+--------
 # React Native Wikitude Bridge
 
 # Introduction
