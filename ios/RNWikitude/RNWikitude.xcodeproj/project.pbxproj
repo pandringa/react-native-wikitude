@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0038F5E224582C0003413A3 /* RNWikitudeViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0038F5D224582C0003413A3 /* RNWikitudeViewManager.m */; };
 		E9BF6EC71F6054D0008F6A40 /* RNWikitude.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BF6EC61F6054D0008F6A40 /* RNWikitude.m */; };
 		E9BF6EC81F6054D0008F6A40 /* RNWikitude.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E9BF6EC51F6054D0008F6A40 /* RNWikitude.h */; };
 		E9BF6ED61F605527008F6A40 /* ARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BF6ED51F605527008F6A40 /* ARViewController.m */; };
@@ -27,6 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D0038F5D224582C0003413A3 /* RNWikitudeViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNWikitudeViewManager.m; sourceTree = "<group>"; };
 		E9BF6EC21F6054D0008F6A40 /* libRNWikitude.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNWikitude.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9BF6EC51F6054D0008F6A40 /* RNWikitude.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNWikitude.h; sourceTree = "<group>"; };
 		E9BF6EC61F6054D0008F6A40 /* RNWikitude.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNWikitude.m; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				E9BF6ED51F605527008F6A40 /* ARViewController.m */,
 				E9BF6EC51F6054D0008F6A40 /* RNWikitude.h */,
 				E9BF6EC61F6054D0008F6A40 /* RNWikitude.m */,
+				D0038F5D224582C0003413A3 /* RNWikitudeViewManager.m */,
 			);
 			path = RNWikitude;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				E9BF6EC71F6054D0008F6A40 /* RNWikitude.m in Sources */,
 				E9BF6ED61F605527008F6A40 /* ARViewController.m in Sources */,
+				D0038F5E224582C0003413A3 /* RNWikitudeViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

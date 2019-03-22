@@ -1,3 +1,6 @@
-import {NativeModules} from 'react-native';
+import {NativeModules, requireNativeComponent} from 'react-native';
 
-module.exports = NativeModules.RNWikitude;
+module.exports = {
+    Wikitude: NativeModules.RNWikitude,
+    WikitudeView: requireNativeComponent('RNWikitudeView')
+}
