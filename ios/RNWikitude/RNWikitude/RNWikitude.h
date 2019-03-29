@@ -26,4 +26,6 @@
 //@property (nonatomic, strong) RCTPromiseResolveBlock resolve;
 @property (nonatomic, strong) RCTPromiseRejectBlock reject;
 
+- (void)checkCameraPermissions:(void(^)(BOOL granted))callback;
+
 @end

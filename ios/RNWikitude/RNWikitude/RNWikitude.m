@@ -61,43 +61,39 @@ RCT_EXPORT_MODULE()
 
 - (void)checkCameraPermissions:(void(^)(BOOL granted))callback
 {
-    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if (status == AVAuthorizationStatusAuthorized) {
-        callback(YES);
+    #if TARGET_IPHONE_SIMULATOR
+        self.reject(ERROR_PICKER_CANNOT_RUN_CAMERA_ON_SIMULATOR_KEY, ERROR_PICKER_CANNOT_RUN_CAMERA_ON_SIMULATOR_MSG, nil);
         return;
-    } else if (status == AVAuthorizationStatusNotDetermined){
-        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-            callback(granted);
+    #else
+        AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if (status == AVAuthorizationStatusAuthorized) {
+            callback(YES);
             return;
-        }];
-    } else {
-        callback(NO);
-    }
+        } else if (status == AVAuthorizationStatusNotDetermined){
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                callback(granted);
+                return;
+            }];
+        } else {
+            self.reject(ERROR_PICKER_NO_CAMERA_PERMISSION_KEY, ERROR_PICKER_NO_CAMERA_PERMISSION_MSG, nil);
+            callback(NO);
+        }
+    #endif
 }
 
 RCT_EXPORT_METHOD(startAR:(NSString *)url hasGeolocation:(BOOL *)geo hasImageRecognition:(BOOL *)image hasInstantTracking:(BOOL *)instant wikitudeSDKKey:(NSString *)sdkkey)
 {
-
-    
-#if TARGET_IPHONE_SIMULATOR
-    self.reject(ERROR_PICKER_CANNOT_RUN_CAMERA_ON_SIMULATOR_KEY, ERROR_PICKER_CANNOT_RUN_CAMERA_ON_SIMULATOR_MSG, nil);
-    return;
-#else
     [self checkCameraPermissions:^(BOOL granted) {
-        if (!granted) {
-            self.reject(ERROR_PICKER_NO_CAMERA_PERMISSION_KEY, ERROR_PICKER_NO_CAMERA_PERMISSION_MSG, nil);
-            return;
+        if (granted) {
+            ARViewController *arView = [[ARViewController alloc] init];
+            arView.url = url;
+            arView.sdkkey = sdkkey;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[self getRootVC] presentViewController:arView animated:YES completion:nil];
+            });
         }
-        
-        ARViewController *arView = [[ARViewController alloc] init];
-        arView.url = url;
-        arView.sdkkey = sdkkey;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[self getRootVC] presentViewController:arView animated:YES completion:nil];
-        });
     }];
-#endif
 }
 
 @end
