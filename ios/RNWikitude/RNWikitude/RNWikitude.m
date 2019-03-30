@@ -33,16 +33,6 @@
 }
 RCT_EXPORT_MODULE()
 
-
-- (instancetype)init
-{
-    if (self = [super init]) {
-
-    }
-    
-    return self;
-}
-
 - (void) setConfiguration:(NSDictionary *)options
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject {

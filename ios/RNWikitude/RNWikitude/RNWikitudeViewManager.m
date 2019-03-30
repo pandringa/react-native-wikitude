@@ -29,12 +29,6 @@ RCT_EXPORT_VIEW_PROPERTY(packageUrl, NSString)
     wikiView.delegate = self;
     wikiView.requiredFeatures = WTFeature_ImageTracking;
     
-    NSLog(@"Set Wikitude Key to: %@", wikiView.sdkKey);
-    [wikiView setLicenseKey:wikiView.sdkKey];
-    
-    NSLog(@"Set Wikitude URL to: %@", wikiView.packageUrl);
-    [wikiView loadArchitectWorldFromURL:[NSURL URLWithString:wikiView.packageUrl]];
-    
     return wikiView;
 }
 
