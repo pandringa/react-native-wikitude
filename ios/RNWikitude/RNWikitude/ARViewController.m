@@ -14,8 +14,6 @@
 
 @interface ARViewController () <WTArchitectViewDelegate, WTArchitectViewDebugDelegate, ARViewControllerDelegate>
 
-@property (nonatomic, strong) UIButton *button;
-
 @end
 
 @implementation ARViewController
@@ -25,8 +23,6 @@
     /* Remove this view controller from the default Notification Center so that it can be released properly */
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-// Add close button globally
 
 
 
@@ -61,23 +57,6 @@
         NSDictionary *views = NSDictionaryOfVariableBindings(_architectView);
         [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"|[_architectView]|" options:0 metrics:nil views:views] ];
         [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_architectView]|" options:0 metrics:nil views:views] ];
-
-//        Add the close button
-        
-        self.button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.button addTarget:self
-                   action:@selector(closeARClicked)
-         forControlEvents:UIControlEventTouchUpInside];
-        [self.button setTitle:@"Exit AR" forState:UIControlStateNormal];
-        
-        self.button.frame = CGRectMake(
-                                  0,
-                                  CGRectGetHeight(self.view.bounds) - 80.0,
-                                  CGRectGetWidth(self.view.bounds),
-                                  80.0);
-        self.button.backgroundColor = [UIColor blackColor];
-        self.button.tintColor = [UIColor whiteColor];
-        [self.view addSubview:self.button];
     }
     else {
         NSLog(@"This device is not supported. Show either an alert or use this class method even before presenting the view controller that manages the WTArchitectView. Error: %@", [deviceSupportError localizedDescription]);
@@ -87,9 +66,6 @@
 #pragma mark - View Lifecycle
 - (void)viewWillAppear:(BOOL)animated {
    // [super viewWillAppear:animated];
-
-    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    [self.architectView setShouldRotate:YES toInterfaceOrientation:orientation];
 
    /* WTArchitectView rendering is started once the view controllers view will appear */
    // [self startWikitudeSDKRendering];
@@ -113,33 +89,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - View Rotation
-- (BOOL)shouldAutorotate {
-
-    return YES;
-}
-
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-
-    return UIInterfaceOrientationMaskAll;
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-
-    /* When the device orientation changes, specify if the WTArchitectView object should rotate as well */
-    [self.architectView setShouldRotate:YES toInterfaceOrientation:toInterfaceOrientation];
-    self.button.hidden = true;
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    self.button.frame = CGRectMake(
-                                   0,
-                                   CGRectGetHeight(self.view.bounds) - 80.0,
-                                   CGRectGetWidth(self.view.bounds),
-                                   80.0);
-    self.button.hidden = false;
 }
 
 #pragma mark - Private Methods
@@ -225,13 +174,6 @@
         /* Standard WTArchitectView rendering resuming after the application becomes active again */
         [self startWikitudeSDKRendering];
     });
-}
-
-#pragma mark - Actions
--(void)closeARClicked
-{
-    [self stopWikitudeSDKRendering];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

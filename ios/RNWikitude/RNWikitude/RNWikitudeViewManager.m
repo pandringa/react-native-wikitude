@@ -25,11 +25,21 @@ RCT_EXPORT_VIEW_PROPERTY(packageUrl, NSString)
 
 - (UIView *)view
 {
-    RNWikitudeView *wikiView = [[RNWikitudeView alloc] init];
-    wikiView.delegate = self;
-    wikiView.requiredFeatures = WTFeature_ImageTracking;
     
-    return wikiView;
+//    NSError *deviceNotSupportedError = nil;
+//    if ( [WTArchitectView isDeviceSupportedForRequiredFeatures:WTFeature_Geo | WTFeature_ImageTracking error:&deviceNotSupportedError] ) { // 1
+//
+//        RNWikitudeView *wikiView = [[RNWikitudeView alloc] init];
+//        wikiView.delegate = self;
+//        wikiView.requiredFeatures = WTFeature_ImageTracking;
+//
+//        return wikiView;
+//    } else {
+//        NSLog(@"device is not supported - reason: %@", [deviceNotSupportedError localizedDescription]);
+//
+//        return [[UIView alloc] init];
+//    }
+    return [[RNWikitudeView alloc] init];
 }
 
 - (dispatch_queue_t)methodQueue

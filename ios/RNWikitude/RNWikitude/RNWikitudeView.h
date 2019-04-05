@@ -8,8 +8,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "RNWikitude.h"
+@interface UIView (mxcl)
+- (UIViewController *)parentViewController;
+@end
 
-@interface RNWikitudeView : WTArchitectView
-@property (nonatomic, assign) NSString *packageUrl;
-@property (nonatomic, assign) NSString *sdkKey;
+@interface RNWikitudeView : UIView
+@property (nonatomic, retain) NSString *packageUrl;
+@property (nonatomic, retain) NSString *sdkKey;
+@property (nonatomic, strong) ARViewController *arViewController;
 @end
