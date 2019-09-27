@@ -1,6 +1,6 @@
 {
 	"name": "react-native-wikitude",
-	"version": "2.0.4",
+	"version": "2.1.0",
 	"description": "Bridge between Wikitude and React Native",
 	"main": "index.js",
 	"scripts": {
@@ -15,5 +15,6 @@
 	],
 	"author": "reesenewslab",
 	"license": "MIT",
-	"repository": "github:reesenewslab/react-native-wikitude"
+	"homepage": "https://github.com/reesenewslab/react-native-wikitude",
+	"repository": "github:reesenewslab/react-native-wikitude.git"
 }
